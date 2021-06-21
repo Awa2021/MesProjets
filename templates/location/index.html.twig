@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello LocationController!
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-5">
+		<div class="jumbotron">
+			<h1 class="display-3">Bienvenue sur Kaay deukk</h1>
+			<p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+			<hr class="my-4">
+			<p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+			<p class="lead">
+				<a class="btn btn-primary btn-lg" href="#" role="button">En savoir plus</a>
+			</p>
+		</div>
+		<h2 class="my-5">Les dernières annonces...</h2>
+		<div class="row">
+            {% for i in 0..20 %}
+			<div class="col-md-4">
+				<div class="card mb-3"></div>
+
+
+				<h5 class="card-header">Chambre de 30000/mois</h5>
+
+				<svg xmlns="http://www.w3.org/2000/svg" class="d-block user-select-none" width="100%" height="200" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveaspectratio="xMidYMid slice" viewbox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
+					<rect width="100%" height="100%" fill="#868e96"></rect>
+					<text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
+				</svg>
+				<div class="card-body">
+					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+				</div>
+
+				<div class="card-body">
+					<a href="#" class="card-link ">Card link</a>
+					<a href="#" class="card-link btn btn-primary">Another link</a>
+				</div>
+				<div class="card-footer text-muted text-center">
+					2 days ago
+                    <i class="fas fa-map-marker"></i>
+                    <strong>Maristes</strong>
+				</div>
+			</div>
+            {% endfor %}
+		</div>
+	</div>
+{% endblock %}
