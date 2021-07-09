@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}CreateForm!
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-2">
+		<div class="row">
+			<div class="col-12 col-md-8 col-lg-6 mx-auto">
+				{{form_start(form)}}
+				{{form_row(form.title,{'attr': {'placeholder': "Titre de l'article"}})}}
+				{{form_row(form.introduction,{'attr': {'placeholder': "Contenu de l'article"}})}}
+				{{form_row(form.description,{'attr': {'placeholder': "Contenu de l'article"}})}}
+				{{form_row(form.coverImage,{'attr': {'placeholder': "Url de l'image"}})}}
+				{{form_row(form.address,{'attr': {'placeholder': "adresse de l'annonce"}})}}
+				{{form_row(form.rooms,{'attr': {'placeholder': "le nombre de chambres"}})}}
+				{{form_row(form.price,{'attr': {'placeholder': "le prix"}})}}
+				{{form_row(form.isAvailable)}}
+				<button type="submit" class="btn btn-primary">{{button_label|default('Modifier')}}</button>
+				{{form_end(form)}}
+			</div>
+		</div>
+	</div>
+
+
+{% endblock %}
+

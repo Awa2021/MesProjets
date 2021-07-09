@@ -67,14 +67,25 @@ class Annonce
     private $createdAt;
 
     /**
-     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="annonce")
+     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="annonce",cascade={"persist","remove"})
      */
     private $comments;
 
     /**
-     * @ORM\OneToMany(targetEntity=Image::class, mappedBy="annonce")
+     * @ORM\OneToMany(targetEntity=Image::class, mappedBy="annonce",cascade={"persist","remove"})
      */
     private $images;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $introduction;
+
+    
+
+    
+
+    
 
     public function __construct()
     {
@@ -269,5 +280,15 @@ class Annonce
         return $this;
     }
 
-    
+    public function getIntroduction(): ?string
+    {
+        return $this->introduction;
+    }
+
+    public function setIntroduction(string $introduction): self
+    {
+        $this->introduction = $introduction;
+
+        return $this;
+    }
 }

@@ -24,32 +24,33 @@ class AppFixtures extends Fixture
 
         $annonce = new Annonce();
         $annonce->setTitle($faker->sentence(3));
+        $annonce->setIntroduction($faker->sentence());
       //  $annonce->setSlug($slugger->slugify($annonce->getTitle()));
-        $annonce->setDescription($faker->text(1200));
+        $annonce->setDescription($faker->text(500));
         $annonce->setPrice(mt_rand(30000,60000));
         $annonce->setAddress($faker->address);
-        $annonce->setCoverImage("https://picsum.photos/1024/300?random=".mt_rand(1,5000));
+        $annonce->setCoverImage("MonImage.jpg");
         $annonce->setRooms(mt_rand(0,5));
         $annonce->setIsAvailable(mt_rand(0,1));
         $annonce->setCreatedAt( $faker->dateTimeBetween('-3 month','now'));
 
-        for ($j = 0; $j<7; $j++) {
+        for ($j = 0; $j<mt_rand(0,7); $j++) {
             $comment = new Comment();
             $comment->setAuthor($faker->name(200)) 
                     ->setEmail($faker->email())
                     ->setContent($faker->text())
                     ->setCreatedAt( $faker->dateTimeBetween('-3 month','now'))
                     ->setAnnonce($annonce);
-                    $manager->persist($comment);
+                   // $manager->persist($comment);
                     $annonce->addComment($comment);
         }
 
         for ($k = 0; $k<mt_rand(0,4); $k++) {
             $image=new Image();
-            $image->setImageUrl(("https://picsum.photos/1024/300?random=".mt_rand(1,5000)))
+            $image->setImageUrl(("https://picsum.photos/1024/500?random=".mt_rand(1,5000)))
                 ->setDescription($faker->text())
                 ->setAnnonce($annonce);
-                $manager->persist($image);
+              //  $manager->persist($image);
                 $annonce->addImage($image);
         }
                     

@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AnnonceController!
+{% endblock %}
+
+{% block body %}
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Address</th>
+      <th scope="col">Price</th>
+      <th scope="col">Rooms</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  {% for annonce in annonces %}
+  <tbody>
+      <td>{{annonce.title}}</td>
+      <td>{{annonce.address}}</td>
+      <td>{{annonce.price}}</td>
+      <td>{{annonce.rooms}}</td>
+   <td> 
+        
+   <a href="{{path('annonce_edit',{id: annonce.id})}}"><i class="fas fa-edit"></i></a>
+   <a href="{{path('annonce_delete',{id: annonce.id})}}"><i class="fas fa-trash"></i></a>
+   </td>
+   
+</tbody>
+
+{% endfor %}
+
+{% endblock %}

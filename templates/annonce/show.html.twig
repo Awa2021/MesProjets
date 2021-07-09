@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello LocationController!
+{% endblock %}
+
+{% block body %}
+
+
+	<div class="container mt-5" style="background-image:url(/uploads/coverImage/{{annonce.coverImage}}); height:350px;text-shadow:2px 2px 4px #000000;color:white;text-align: center;">
+		<div class="container">
+			<h5>{{annonce.title}}</h5><br/>
+			<p>{{annonce.introduction}}<br/></p>
+			<p>{{annonce.rooms}}
+				chambres à
+				{{annonce.price}}
+				CFA/mois</p><br/>
+			<p>{{annonce.address}}</p>
+		</div>
+	</div>
+	<div class="container mt-2">
+		<h5>{{annonce.description}}</h5>
+	</div>
+
+	<div class="container mt-3">
+		{% for comment in annonce.comments %}
+			<div class="row">
+				<div class="col-md-8" style="max-width;">
+					<p class="card-text">
+						<td>{{comment.email}}</td>
+						<td>{{comment.content}}</td>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p>
+						<td>{{comment.author}}</td>
+					</p>
+				</div>
+			</div>
+		{% endfor %}
+		<div>
+		<legend>Ajouter votre commentaire</legend>
+			{{form_start(form)}}
+			{{form_row(form.author,{'attr': {'placeholder': "nom de l'annonce"}})}}
+			{{form_row(form.content,{'attr': {'placeholder': "Contenu de l'annonce"}})}}
+			{{form_row(form.email,{'attr': {'placeholder': "email de l'auteur"}})}}
+			<center>
+			<button type="submit" class="btn btn-primary">{{button_label|default('Commenter')}}</button>
+			</center>
+			{{form_end(form)}}
+		</div>
+			<a class="btn btn-primary" href="{{path('annonce_edit',{'id':annonce.id})}}">Modifier</a>
+			<a class="btn btn-primary" href="{{path('annonce_delete',{'id':annonce.id})}}">Supprimer</a>
+	</div>
+{% endblock %}
