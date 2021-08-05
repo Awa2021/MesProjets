@@ -3,6 +3,12 @@
 {% block title %}Hello ProductController!{% endblock %}
 
 {% block body %}
+
+{% for message in app.flashes('success') %}
+    <div class="alert alert-success" role="alert">{{ message }}</div>
+{% endfor %}
+
+<img src="upload\images\fondBoutique.png" class="img-fluid"alt="couverture" width="100%" height="" >
 <div class="bg-light p-3">
     <h1>Les produits</h1>
 </div>
